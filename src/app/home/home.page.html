@@ -1,0 +1,22 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Blank
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item *ngFor = "let prod of productos" [routerLink]="['/home',prod.id]"> <!-- //la propiedad ruterlink me permite moverme a una cierta ruta -->
+      <ion-avatar slot = "start">
+        <img [src]="prod.imagen"/> <!-- // los atributos van con corchetes y no entre llaves el llamado -->
+      </ion-avatar>
+      <ion-label>{{prod.nombre}}</ion-label>
+      <ion-label color="danger">{{prod.precio}}</ion-label> <!-- // los textos van entre llaves dobles (el llamado) -->
+      <ion-label *ngIf="prod.cantidad==0" color="danger">SIN STOCK</ion-label>
+      <ion-label *ngIf="prod.cantidad>0" color="primary">CON STOCK</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
+  
